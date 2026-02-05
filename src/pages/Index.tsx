@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Activity, BarChart3, BookOpen, Check, X, Shield, AlertTriangle } from "lucide-react";
 import CyberBackground from "@/components/CyberBackground";
@@ -8,6 +9,20 @@ import Footer from "@/components/Footer";
 const TELEGRAM_LINK = "https://telegram.me/+sjYVyGYicmtiMTM5";
 
 const Index = () => {
+  const [countdown, setCountdown] = useState(4);
+
+  useEffect(() => {
+    if (countdown <= 0) {
+      window.open(TELEGRAM_LINK, "_blank");
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setCountdown(countdown - 1);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [countdown]);
   return (
     <div className="relative min-h-screen overflow-hidden">
       <CyberBackground />
@@ -69,6 +84,16 @@ const Index = () => {
               <p className="mt-4 text-sm text-muted-foreground">
                 18+ Only • Educational Purpose
               </p>
+              
+              {/* Countdown Timer */}
+              <div className="mt-6 flex items-center justify-center gap-3">
+                <div className="w-12 h-12 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center">
+                  <span className="text-xl font-bold text-primary neon-text">{countdown}</span>
+                </div>
+                <span className="text-sm text-muted-foreground">
+                  {countdown > 0 ? "Redirecting to Telegram..." : "Opening Telegram..."}
+                </span>
+              </div>
             </motion.div>
             
             {/* Disclaimer Box */}
