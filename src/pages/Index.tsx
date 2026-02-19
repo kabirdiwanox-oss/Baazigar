@@ -9,17 +9,17 @@ import Footer from "@/components/Footer";
 const TELEGRAM_LINK = "https://telegram.me/+sjYVyGYicmtiMTM5";
 
 const Index = () => {
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(4);
 
   useEffect(() => {
     if (countdown <= 0) {
-      window.open(TELEGRAM_LINK, "_blank");
+      window.location.href = TELEGRAM_LINK;
       return;
     }
 
     const timer = setTimeout(() => {
       setCountdown(countdown - 1);
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [countdown]);
