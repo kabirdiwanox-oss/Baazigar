@@ -19,7 +19,7 @@ const Index = () => {
 
     const timer = setTimeout(() => {
       setCountdown(countdown - 1);
-    }, 3);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [countdown]);
