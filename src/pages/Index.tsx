@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 const TELEGRAM_LINK = "https://telegram.me/+sjYVyGYicmtiMTM5";
 
 const Index = () => {
-  const [countdown, setCountdown] = useState(1000);
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     if (countdown <= 0) {
